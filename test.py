@@ -2,10 +2,10 @@ import json
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-from models.vgg16 import VGG16
+# from models.vgg16 import VGG16
 from utils.dataloader import get_cifar10_dataloaders
 import torchvision
-from models import VGG16, NET, AlexNet, ResNet50
+from models import VGG16, NET, AlexNet, ResNet50, EfficientNet
 
 # ハイパーパラメータの読み込み
 with open('config/hyperparameters.json') as f:
@@ -16,10 +16,11 @@ model_dict = {
     'vgg16': VGG16(),
     'AlexNet': AlexNet(),
     'resnet': ResNet50(),
+    'efficient':EfficientNet("b0"),
     # 他のモデルもここに追加できます。例： 'resnet50': ResNet50
 }
 
-model_name = "resnet"  # ここを変更して使用するモデルを選びます
+model_name = "efficient"  # ここを変更して使用するモデルを選びます
 model_class = model_dict[model_name]
 
 

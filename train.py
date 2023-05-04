@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision.transforms as transforms
-from models import VGG16, NET, AlexNet, ResNet50
+from models import VGG16, NET, AlexNet, ResNet50, EfficientNet
 # from utils.dataloader import get_cifar10_dataloaders
 
 # NumPy、Matplotlib、PyTorchをインポートする
@@ -24,10 +24,11 @@ model_dict = {
     'vgg16': VGG16(),
     'AlexNet': AlexNet(),
     'resnet': ResNet50(),
+    'efficient':EfficientNet("b0")
     # 他のモデルもここに追加できます。例： 'resnet50': ResNet50
 }
 
-model_name = "resnet"  # ここを変更して使用するモデルを選びます
+model_name = "efficient"  # ここを変更して使用するモデルを選びます
 model_class = model_dict[model_name]
 
 
