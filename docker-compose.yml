@@ -1,0 +1,11 @@
+version: '3'
+services:
+  python3:
+    build: .
+    container_name: 'py3-container'
+    working_dir: '/NNmodel_practice'
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/NNmodel_practice
+      - /home/naoki/datasets:/datasets
