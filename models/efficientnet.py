@@ -3,6 +3,7 @@
 import torch
 import torch.nn as nn
 from math import ceil
+from torchinfo import summary
 
 #学習法を変える
 
@@ -179,7 +180,8 @@ def test():
     num_examples, num_classes = 4, 10
     x = torch.randn((num_examples, 3, res, res)).to(device)
     model = EfficientNet(version, num_classes).to(device)
-    print(model(x).shape)
+    # print(model(x).shape)
+    summary(model, input_size=(1, 3, 32, 32))
 
 if __name__ == "__main__":
     test()

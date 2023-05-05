@@ -5,11 +5,17 @@ import torchvision.transforms as transforms
 # from models.vgg16 import VGG16
 from utils.dataloader import get_cifar10_dataloaders
 import torchvision
-from models import VGG16, NET, AlexNet, ResNet50, EfficientNet
+from models import VGG16, NET, AlexNet, ResNet50, EfficientNet, GoogLeNet, MobileNetV2
+import argparse
 
 # ハイパーパラメータの読み込み
 with open('config/hyperparameters.json') as f:
     hyperparameters = json.load(f)
+
+# 引数の定義
+parser = argparse.ArgumentParser(description='This is a program for processing data.')
+parser.add_argument('-m', '--model_name', type=str, default='resnet', help='Input model name')
+args = parser.parse_args()
 
 model_dict = {
     'normal':NET(),
@@ -17,10 +23,12 @@ model_dict = {
     'AlexNet': AlexNet(),
     'resnet': ResNet50(),
     'efficient':EfficientNet("b0"),
+    'googlenet':GoogLeNet(),
+    'mobilenet':MobileNetV2(),
     # 他のモデルもここに追加できます。例： 'resnet50': ResNet50
 }
 
-model_name = "efficient"  # ここを変更して使用するモデルを選びます
+model_name = args.model_name  # ここを変更して使用するモデルを選びます
 model_class = model_dict[model_name]
 
 
